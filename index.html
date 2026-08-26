@@ -22,6 +22,7 @@
         <nav class="main-nav" id="mainNav">
             <a href="#home">Home</a>
             <a href="#services">Services</a>
+            <a href="#faqs">FAQs</a>
             <a href="#reminders">Reminders</a>
             <a href="#announcements">Updates</a>
             <a href="#bod">BOD</a>
@@ -111,6 +112,45 @@
                 <p>Get announcements, activities, and community updates directly on Facebook.</p>
             </div>
             <a href="https://www.facebook.com/share/g/1DDrxqD4ZJ/" target="_blank" rel="noopener noreferrer" class="btn btn-facebook">Visit Facebook Group →</a>
+        </div>
+    </div>
+</section>
+
+
+<section class="section faq-section" id="faqs">
+    <div class="container">
+        <div class="section-heading">
+            <span class="section-label">QUICK ANSWERS</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Find quick answers to common questions about our community, services, facilities, and HOA guidelines.</p>
+        </div>
+
+        <div class="faq-controls">
+            <div class="faq-search-wrapper">
+                <span class="faq-search-icon" aria-hidden="true">⌕</span>
+                <input type="search" id="faq-search" class="faq-search"
+                       placeholder="Search FAQs..."
+                       aria-label="Search frequently asked questions"
+                       autocomplete="off">
+                <button type="button" id="faq-clear" class="faq-clear"
+                        aria-label="Clear FAQ search" hidden>×</button>
+            </div>
+
+            <div id="faq-categories" class="faq-categories"
+                 role="tablist" aria-label="FAQ categories"></div>
+        </div>
+
+        <div id="faq-list" class="faq-list" aria-live="polite">
+            <div class="faq-loading">Loading FAQs...</div>
+        </div>
+
+        <div id="faq-empty" class="faq-empty" hidden>
+            <div class="faq-empty-icon">?</div>
+            <h3>No FAQs found</h3>
+            <p>We couldn't find an answer matching your search. Try another keyword or submit a concern to the HOA.</p>
+            <a href="https://forms.gle/QFCmSgfzNaCzaCRJ7"
+               class="btn btn-primary faq-empty-button"
+               target="_blank" rel="noopener noreferrer">Submit a Concern →</a>
         </div>
     </div>
 </section>

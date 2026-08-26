@@ -1,0 +1,118 @@
+{
+    "categories": [
+        "All",
+        "General",
+        "HOA Services",
+        "Facilities",
+        "Community Rules",
+        "Security",
+        "Documents"
+    ],
+    "faqs": [
+        {
+            "id": "general-001",
+            "category": "General",
+            "question": "How can I contact the HOA?",
+            "answer": "You can contact the HOA through the official contact information provided in the HOA portal. For urgent concerns, please use the appropriate emergency or community contact listed on the portal."
+        },
+        {
+            "id": "general-002",
+            "category": "General",
+            "question": "Where can I find HOA announcements?",
+            "answer": "Important HOA announcements and community updates are posted through the official HOA channels and reflected in the announcements section of this portal whenever applicable."
+        },
+        {
+            "id": "services-001",
+            "category": "HOA Services",
+            "question": "How do I submit a concern?",
+            "answer": "You can submit a concern, request, or community issue through the HOA's online Submit a Concern form.",
+            "link": {
+                "label": "Submit a Concern",
+                "url": "https://forms.gle/QFCmSgfzNaCzaCRJ7"
+            }
+        },
+        {
+            "id": "services-002",
+            "category": "HOA Services",
+            "question": "How do I request assistance from the HOA?",
+            "answer": "For non-emergency concerns, please submit the appropriate online form or contact the HOA through the official communication channels."
+        },
+        {
+            "id": "facilities-001",
+            "category": "Facilities",
+            "question": "How do I reserve the clubhouse or court?",
+            "answer": "Use the HOA's online reservation form to request a schedule for the clubhouse or court.",
+            "link": {
+                "label": "Book & Play",
+                "url": "https://forms.gle/Jb8tJkpL5nXXc6fq5"
+            }
+        },
+        {
+            "id": "facilities-002",
+            "category": "Facilities",
+            "question": "Who can use the HOA facilities?",
+            "answer": "Facility use is subject to the HOA's current rules, schedules, and reservation policies. Please check the applicable guidelines before using the facility."
+        },
+        {
+            "id": "rules-001",
+            "category": "Community Rules",
+            "question": "What should I do if a community rule is being violated?",
+            "answer": "If you observe a community concern or possible rule violation, please report it through the official HOA concern form so it can be properly documented and addressed."
+        },
+        {
+            "id": "rules-002",
+            "category": "Community Rules",
+            "question": "What should I consider when parking in the subdivision?",
+            "answer": "Please park responsibly and avoid blocking driveways, roads, gates, sidewalks, or access needed by emergency and service vehicles. Always observe the HOA's current parking guidelines.",
+            "keywords": [
+                "parking",
+                "park",
+                "vehicle",
+                "car",
+                "street"
+            ]
+        },
+        {
+            "id": "rules-003",
+            "category": "Community Rules",
+            "question": "What are the current garbage collection days?",
+            "answer": "Garbage collection is currently scheduled every Wednesday and Saturday. Please place trash in proper garbage bags and put them in front of your house for collection."
+        },
+        {
+            "id": "rules-004",
+            "category": "Community Rules",
+            "question": "What should I consider before renovating or modifying my property?",
+            "answer": "Before extending, constructing, or making alterations to your property, make sure the work complies with applicable permits, zoning and building requirements, and HOA guidelines."
+        },
+        {
+            "id": "rules-005",
+            "category": "Community Rules",
+            "question": "What time should I be mindful of noise-producing activities?",
+            "answer": "Please be considerate of neighbors, especially at night. The current community reminder highlights 10:00 PM as a noise-producing equipment reminder. Avoid excessive or disturbing noise at any time."
+        },
+        {
+            "id": "security-001",
+            "category": "Security",
+            "question": "What should I do if I notice a security concern?",
+            "answer": "For an immediate security concern, contact the appropriate security or emergency contact listed in the portal. For non-urgent concerns involving subdivision security, please report the matter to the HOA."
+        },
+        {
+            "id": "security-002",
+            "category": "Security",
+            "question": "What should I do if I see an issue at the subdivision gate?",
+            "answer": "Please report the issue to the security personnel and, when appropriate, submit a concern to the HOA so the matter can be documented and followed up."
+        },
+        {
+            "id": "documents-001",
+            "category": "Documents",
+            "question": "Where can I find HOA documents?",
+            "answer": "Available HOA documents are provided in the Documents section of this portal. Additional documents may be added as they become available."
+        },
+        {
+            "id": "documents-002",
+            "category": "Documents",
+            "question": "Where can I find the HOA By-Laws?",
+            "answer": "The HOA By-Laws can be accessed through the Documents section of the portal when the document is available online."
+        }
+    ]
+}
