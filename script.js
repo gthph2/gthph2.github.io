@@ -112,59 +112,222 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function renderFaqs() {
         const filteredFaqs = getFilteredFaqs();
-
+    
         faqList.innerHTML = "";
-
+    
         if (!filteredFaqs.length) {
             faqEmpty.hidden = false;
             return;
         }
-
+    
         faqEmpty.hidden = true;
-
+    
         filteredFaqs.forEach(function (faq) {
             const item = document.createElement("article");
             const answerId = "faq-answer-" + faq.id;
             const questionId = "faq-question-" + faq.id;
-
+    
             item.className = "faq-item";
             item.dataset.faqId = faq.id;
-
-            const linkHtml = faq.link && faq.link.url
-                ? `
-                    <a class="faq-link"
-                       href="${escapeHtml(faq.link.url)}"
-                       target="_blank"
-                       rel="noopener noreferrer">
+    
+            /*
+             * Standard FAQ answer
+             */
+            let answerContent = `
+                <p class="faq-answer-text">
+                    ${escapeHtml(faq.answer || "")}
+                </p>
+            `;
+    
+            /*
+             * Payment Schedule
+             */
+            if (Array.isArray(faq.schedule) && faq.schedule.length) {
+    
+                const scheduleCards = faq.schedule.map(function (item) {
+                    return `
+                        <div class="faq-payment-date">
+                            <div class="faq-payment-calendar" aria-hidden="true">
+                                <span>▦</span>
+                            </div>
+    
+                            <strong class="faq-payment-date-number">
+                                ${escapeHtml(item.date)}
+                            </strong>
+    
+                            <span class="faq-payment-date-label">
+                                ${escapeHtml(item.label)}
+                            </span>
+    
+                            <span class="faq-payment-type">
+                                ${escapeHtml(item.payment)}
+                            </span>
+                        </div>
+                    `;
+                }).join("");
+    
+                answerContent += `
+                    <div class="faq-payment-schedule">
+    
+                        <div class="faq-payment-title">
+                            <span class="faq-payment-title-icon" aria-hidden="true">
+                                📅
+                            </span>
+    
+                            <h3>HOA DUES PAYMENT SCHEDULE</h3>
+                        </div>
+    
+                        <p class="faq-payment-intro">
+                            To give you more flexibility, dues can be paid twice a month on the following dates:
+                        </p>
+    
+                        <div class="faq-payment-dates">
+                            ${scheduleCards}
+                        </div>
+    
+                    </div>
+                `;
+            }
+    
+            /*
+             * Homeowner message
+             */
+            if (faq.message) {
+                answerContent += `
+                    <div class="faq-payment-message">
+    
+                        <div class="faq-payment-divider">
+                            <span></span>
+                            <strong>♥</strong>
+                            <span></span>
+                        </div>
+    
+                        <p>
+                            ${escapeHtml(faq.message)}
+                        </p>
+    
+                    </div>
+                `;
+            }
+    
+            /*
+             * QR Code / Payment Area
+             */
+            if (faq.payment) {
+    
+                const paymentImage = faq.payment.image
+                    ? `
+                        <div class="faq-payment-qr">
+                            <img
+                                src="${escapeHtml(faq.payment.image)}"
+                                alt="HOA dues payment QR code"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                            >
+    
+                            <div class="faq-payment-qr-placeholder" style="display:none;">
+                                <span class="faq-payment-qr-symbol">▦</span>
+                                <strong>QR CODE</strong>
+                                <small>PLACEHOLDER</small>
+                            </div>
+                        </div>
+                    `
+                    : `
+                        <div class="faq-payment-qr">
+                            <div class="faq-payment-qr-placeholder">
+                                <span class="faq-payment-qr-symbol">▦</span>
+                                <strong>QR CODE</strong>
+                                <small>PLACEHOLDER</small>
+                            </div>
+                        </div>
+                    `;
+    
+                const paymentButton = faq.payment.link
+                    ? `
+                        <a
+                            href="${escapeHtml(faq.payment.link)}"
+                            class="faq-payment-button"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <span aria-hidden="true">↗</span>
+                            ${escapeHtml(
+                                faq.payment.linkText ||
+                                "Scan or click here to pay now"
+                            )}
+                        </a>
+                    `
+                    : "";
+    
+                answerContent += `
+                    <div class="faq-payment-area">
+    
+                        ${paymentImage}
+    
+                        <p class="faq-payment-caption">
+                            ${escapeHtml(
+                                faq.payment.caption ||
+                                "Scan the QR code to pay your HOA dues."
+                            )}
+                        </p>
+    
+                        ${paymentButton}
+    
+                    </div>
+                `;
+            }
+    
+            /*
+             * Standard FAQ link support
+             */
+            if (faq.link && faq.link.url) {
+                answerContent += `
+                    <a
+                        class="faq-link"
+                        href="${escapeHtml(faq.link.url)}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         ${escapeHtml(faq.link.label || "Learn More")} →
                     </a>
-                `
-                : "";
-
+                `;
+            }
+    
             item.innerHTML = `
-                <button type="button"
-                        id="${questionId}"
-                        class="faq-question"
-                        aria-expanded="false"
-                        aria-controls="${answerId}">
-                    <span class="faq-question-text">${escapeHtml(faq.question)}</span>
-                    <span class="faq-chevron" aria-hidden="true">↓</span>
+                <button
+                    type="button"
+                    id="${questionId}"
+                    class="faq-question"
+                    aria-expanded="false"
+                    aria-controls="${answerId}"
+                >
+                    <span class="faq-question-text">
+                        ${escapeHtml(faq.question)}
+                    </span>
+    
+                    <span
+                        class="faq-chevron"
+                        aria-hidden="true"
+                    >
+                        ↓
+                    </span>
                 </button>
-
-                <div id="${answerId}"
-                     class="faq-answer"
-                     role="region"
-                     aria-labelledby="${questionId}"
-                     hidden>
+    
+                <div
+                    id="${answerId}"
+                    class="faq-answer"
+                    role="region"
+                    aria-labelledby="${questionId}"
+                    hidden
+                >
                     <div class="faq-answer-inner">
                         <div class="faq-answer-content">
-                            ${escapeHtml(faq.answer)}
-                            ${linkHtml}
+                            ${answerContent}
                         </div>
                     </div>
                 </div>
             `;
-
+    
             faqList.appendChild(item);
         });
     }
