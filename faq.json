@@ -3,6 +3,7 @@
         "All",
         "General",
         "HOA Services",
+        "Payments & Dues",
         "Facilities",
         "Community Rules",
         "Security",
@@ -14,6 +15,26 @@
             "category": "General",
             "question": "How can I contact the HOA?",
             "answer": "You can contact the HOA through the official contact information provided in the HOA portal. For urgent concerns, please use the appropriate emergency or community contact listed on the portal."
+        },
+        {
+            "id": "dues-001",
+            "category": "Payments & Dues",
+            "question": "When is the HOA dues payment schedule?",
+            "answer": "To give our homeowners more flexibility, HOA dues can be paid twice a month. Please settle your dues on or before the 10th or 25th of the month. Your timely payment helps keep our community strong, safe, and beautiful for everyone. Let’s continue building a neighborhood we can all be proud of! 💚 Thank you for being a responsible and caring homeowner.",
+            "keywords": [
+                "dues",
+                "payment",
+                "hoa dues",
+                "payment schedule",
+                "deadline",
+                "10th",
+                "25th",
+                "monthly dues"
+            ],
+            "link": {
+                "label": "Scan or click here to pay your HOA dues",
+                "url": "YOUR_PAYMENT_LINK_HERE"
+            }
         },
         {
             "id": "general-002",
