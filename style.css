@@ -1026,3 +1026,316 @@ a { color: inherit; text-decoration: none; }
         height: 27px;
     }
 }
+
+/* =========================================
+   HOA DUES PAYMENT FAQ
+   ========================================= */
+
+.faq-payment-schedule {
+    margin-top: 24px;
+    padding: 24px;
+    border-radius: 16px;
+    background: linear-gradient(
+        135deg,
+        #fbfdf9 0%,
+        #fffdf5 100%
+    );
+    border: 1px solid rgba(138, 106, 34, 0.15);
+}
+
+/* Title */
+
+.faq-payment-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.faq-payment-title-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--primary-soft);
+    font-size: 18px;
+}
+
+.faq-payment-title h3 {
+    margin: 0;
+    color: var(--dark);
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: .03em;
+}
+
+.faq-payment-intro {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Payment dates */
+
+.faq-payment-dates {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.faq-payment-date {
+    padding: 17px 12px;
+    border: 1px solid rgba(138, 106, 34, .16);
+    border-radius: 14px;
+    background: linear-gradient(
+        135deg,
+        #fff8df 0%,
+        #fff3c8 100%
+    );
+    text-align: center;
+}
+
+.faq-payment-calendar {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 5px;
+    color: var(--primary);
+    font-size: 22px;
+}
+
+.faq-payment-date-number {
+    display: block;
+    color: var(--primary-dark);
+    font-size: 31px;
+    line-height: 1.05;
+}
+
+.faq-payment-date-label {
+    display: block;
+    margin-top: 2px;
+    color: var(--dark);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.faq-payment-type {
+    display: block;
+    margin-top: 7px;
+    color: #28652b;
+    font-size: 11px;
+    font-style: italic;
+    font-weight: 700;
+}
+
+/* Message */
+
+.faq-payment-message {
+    max-width: 720px;
+    margin: 18px auto 0;
+    text-align: center;
+}
+
+.faq-payment-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 13px;
+}
+
+.faq-payment-divider span {
+    flex: 1;
+    height: 1px;
+    background: rgba(39, 91, 42, .25);
+}
+
+.faq-payment-divider strong {
+    color: var(--primary-dark);
+    font-size: 18px;
+}
+
+.faq-payment-message p {
+    margin: 0;
+    color: var(--dark);
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+/* QR/payment area */
+
+.faq-payment-area {
+    max-width: 500px;
+    margin: 22px auto 0;
+    text-align: center;
+}
+
+.faq-payment-qr {
+    width: 190px;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 2px dashed #aeb4ad;
+    border-radius: 14px;
+    background: #fff;
+}
+
+.faq-payment-qr img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 7px;
+}
+
+.faq-payment-qr-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    color: #666;
+}
+
+.faq-payment-qr-symbol {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 58px;
+    line-height: 1;
+    color: #555;
+}
+
+.faq-payment-qr-placeholder strong {
+    font-size: 13px;
+    letter-spacing: .05em;
+}
+
+.faq-payment-qr-placeholder small {
+    font-size: 10px;
+    letter-spacing: .08em;
+}
+
+.faq-payment-caption {
+    max-width: 460px;
+    margin: 0 auto 15px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+/* Payment button */
+
+.faq-payment-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    min-height: 46px;
+    box-sizing: border-box;
+    padding: 11px 18px;
+    border-radius: 10px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 900;
+    text-decoration: none;
+    box-shadow: 0 5px 14px rgba(10, 120, 20, .14);
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+.faq-payment-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 7px 18px rgba(10, 120, 20, .20);
+}
+
+.faq-payment-button span {
+    font-size: 17px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .faq-payment-schedule {
+        padding: 18px 14px;
+        margin-top: 18px;
+    }
+
+    .faq-payment-title {
+        align-items: flex-start;
+    }
+
+    .faq-payment-title h3 {
+        font-size: 14px;
+        line-height: 1.35;
+    }
+
+    .faq-payment-title-icon {
+        flex: 0 0 auto;
+        width: 32px;
+        height: 32px;
+        font-size: 15px;
+    }
+
+    .faq-payment-intro {
+        font-size: 12px;
+    }
+
+    .faq-payment-dates {
+        gap: 9px;
+    }
+
+    .faq-payment-date {
+        padding: 14px 7px;
+    }
+
+    .faq-payment-date-number {
+        font-size: 25px;
+    }
+
+    .faq-payment-date-label {
+        font-size: 10px;
+    }
+
+    .faq-payment-type {
+        font-size: 9px;
+    }
+
+    .faq-payment-message p {
+        font-size: 11px;
+    }
+
+    .faq-payment-qr {
+        width: 165px;
+        height: 165px;
+    }
+
+    .faq-payment-caption {
+        font-size: 11px;
+    }
+
+    .faq-payment-button {
+        font-size: 11px;
+    }
+}
