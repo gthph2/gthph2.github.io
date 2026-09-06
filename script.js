@@ -438,3 +438,208 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadFaqs();
 });
+
+/* =========================================
+   HOA DUES STATUS DEMO
+   ========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const openDuesModal = document.getElementById("openDuesModal");
+    const closeDuesModal = document.getElementById("closeDuesModal");
+    const duesModal = document.getElementById("duesModal");
+    const duesModalOverlay = document.getElementById("duesModalOverlay");
+    const duesForm = document.getElementById("duesForm");
+    const duesResult = document.getElementById("duesResult");
+
+    if (!openDuesModal || !duesModal || !duesForm) {
+        return;
+    }
+
+    function openModal() {
+        duesModal.classList.add("is-open");
+        duesModal.setAttribute("aria-hidden", "false");
+
+        setTimeout(function () {
+            const surnameInput = document.getElementById("duesSurname");
+
+            if (surnameInput) {
+                surnameInput.focus();
+            }
+        }, 100);
+    }
+
+    function closeModal() {
+        duesModal.classList.remove("is-open");
+        duesModal.setAttribute("aria-hidden", "true");
+
+        duesForm.reset();
+
+        if (duesResult) {
+            duesResult.hidden = true;
+            duesResult.innerHTML = "";
+        }
+    }
+
+    openDuesModal.addEventListener("click", openModal);
+
+    if (closeDuesModal) {
+        closeDuesModal.addEventListener("click", closeModal);
+    }
+
+    if (duesModalOverlay) {
+        duesModalOverlay.addEventListener("click", closeModal);
+    }
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && duesModal.classList.contains("is-open")) {
+            closeModal();
+        }
+    });
+
+
+    duesForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const surname = document
+            .getElementById("duesSurname")
+            .value
+            .trim();
+
+        const code = document
+            .getElementById("duesCode")
+            .value
+            .trim();
+
+        if (!surname || !code) {
+            return;
+        }
+
+        /*
+         * DEMO ONLY
+         *
+         * Randomly choose between:
+         * 0 = No outstanding balance
+         * 1 = Outstanding balance
+         */
+
+        const sampleType = Math.random() < 0.5
+            ? "paid"
+            : "unpaid";
+
+
+        /*
+         * Sample homeowner name.
+         *
+         * For now, the supplied surname is displayed.
+         * This makes the demo feel like the real feature.
+         */
+
+        const displaySurname = surname
+            .toLowerCase()
+            .replace(/\b\w/g, function (letter) {
+                return letter.toUpperCase();
+            });
+
+
+        if (sampleType === "paid") {
+
+            duesResult.className = "dues-result success";
+
+            duesResult.innerHTML = `
+                <div class="dues-result-heading">
+                    <span class="dues-result-icon">✓</span>
+                    <strong>No Outstanding Balance</strong>
+                </div>
+
+                <div class="dues-result-name">
+                    ${escapeDuesHtml(displaySurname)}
+                </div>
+
+                <div class="dues-result-details">
+                    <div>
+                        <span>Homeowner Code</span>
+                        <strong>${escapeDuesHtml(code)}</strong>
+                    </div>
+
+                    <div>
+                        <span>Payment Status</span>
+                        <strong>Paid through September 2026</strong>
+                    </div>
+
+                    <div>
+                        <span>Outstanding Balance</span>
+                        <strong>₱0.00</strong>
+                    </div>
+                </div>
+
+                <p class="dues-result-message">
+                    Your HOA dues are up to date. Thank you for keeping
+                    your account current.
+                </p>
+            `;
+
+        } else {
+
+            duesResult.className = "dues-result warning";
+
+            duesResult.innerHTML = `
+                <div class="dues-result-heading">
+                    <span class="dues-result-icon">!</span>
+                    <strong>Outstanding Balance</strong>
+                </div>
+
+                <div class="dues-result-name">
+                    ${escapeDuesHtml(displaySurname)}
+                </div>
+
+                <div class="dues-result-details">
+                    <div>
+                        <span>Homeowner Code</span>
+                        <strong>${escapeDuesHtml(code)}</strong>
+                    </div>
+
+                    <div>
+                        <span>Last Payment Month</span>
+                        <strong>July 2026</strong>
+                    </div>
+
+                    <div>
+                        <span>Outstanding Balance</span>
+                        <strong>₱1,200.00</strong>
+                    </div>
+                </div>
+
+                <p class="dues-result-message">
+                    Your account has an outstanding balance. Please settle
+                    your unpaid HOA dues at your earliest convenience.
+                </p>
+            `;
+        }
+
+        duesResult.hidden = false;
+
+        duesResult.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+    });
+
+
+    /*
+     * Small HTML escaping helper.
+     * This is important because the homeowner input
+     * will eventually come from real users.
+     */
+
+    function escapeDuesHtml(value) {
+
+        const div = document.createElement("div");
+
+        div.textContent = value == null ? "" : String(value);
+
+        return div.innerHTML;
+    }
+
+});
