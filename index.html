@@ -381,6 +381,71 @@
 </footer>
 
 <script src="script.js"></script>
+<!-- HOA Dues Demo Modal -->
+<div class="dues-modal" id="duesModal" aria-hidden="true">
+    <div class="dues-modal-overlay" id="duesModalOverlay"></div>
+
+    <div class="dues-modal-card" role="dialog" aria-modal="true" aria-labelledby="duesModalTitle">
+
+        <button
+            type="button"
+            class="dues-modal-close"
+            id="closeDuesModal"
+            aria-label="Close HOA dues popup">
+            ×
+        </button>
+
+        <div class="dues-modal-icon">💰</div>
+
+        <span class="dues-modal-label">HOMEOWNER SERVICES</span>
+
+        <h2 id="duesModalTitle">View My HOA Dues Status</h2>
+
+        <p class="dues-modal-intro">
+            Enter your surname and homeowner code to view your current HOA dues status.
+        </p>
+
+        <form id="duesForm">
+
+            <div class="dues-form-group">
+                <label for="duesSurname">Surname</label>
+                <input
+                    type="text"
+                    id="duesSurname"
+                    name="surname"
+                    placeholder="Enter surname"
+                    autocomplete="family-name"
+                    required>
+            </div>
+
+            <div class="dues-form-group">
+                <label for="duesCode">Homeowner Code</label>
+                <input
+                    type="text"
+                    id="duesCode"
+                    name="code"
+                    placeholder="e.g. GTH-7K4P92"
+                    autocomplete="off"
+                    required>
+            </div>
+
+            <button type="submit" class="dues-check-button">
+                Check Dues Status →
+            </button>
+
+        </form>
+
+        <div class="dues-demo-note">
+            <span>ⓘ</span>
+            <p>Demo mode: any surname and code can be used for testing.</p>
+        </div>
+
+        <div class="dues-result" id="duesResult" hidden>
+            <!-- Result is inserted by script.js -->
+        </div>
+
+    </div>
+</div>
 <div class="floating-announcement" id="floatingAnnouncement" aria-live="polite">
 <div class="floating-announcement-expanded" id="floatingAnnouncementExpanded">
 <div class="floating-announcement-header"><div class="floating-announcement-title"><span>📢</span><span>IMPORTANT ANNOUNCEMENT</span></div>
