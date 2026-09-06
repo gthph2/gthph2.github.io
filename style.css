@@ -1339,3 +1339,342 @@ a { color: inherit; text-decoration: none; }
         font-size: 11px;
     }
 }
+
+/* =========================================
+   HOA DUES STATUS DEMO
+   ========================================= */
+
+.btn-dues {
+    appearance: none;
+    border: 1px solid var(--yellow);
+    background: var(--yellow-soft);
+    color: #6f5900;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-dues:hover {
+    background: var(--yellow);
+    color: #4f4100;
+}
+
+
+/* Modal Overlay */
+
+.dues-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.dues-modal.is-open {
+    display: flex;
+}
+
+.dues-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 30, 15, 0.55);
+    backdrop-filter: blur(4px);
+}
+
+
+/* Modal Card */
+
+.dues-modal-card {
+    position: relative;
+    z-index: 1;
+    width: min(460px, 100%);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 30px;
+    border-radius: 22px;
+    background: var(--white);
+    box-shadow: 0 25px 70px rgba(0, 40, 0, 0.25);
+    animation: duesModalIn .22s ease-out;
+}
+
+@keyframes duesModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* Close Button */
+
+.dues-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--light);
+    color: var(--muted);
+    font-size: 23px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.dues-modal-close:hover {
+    background: var(--primary-soft);
+    color: var(--primary-dark);
+}
+
+
+/* Header */
+
+.dues-modal-icon {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    background: var(--yellow-soft);
+    font-size: 25px;
+}
+
+.dues-modal-label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary-dark);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.3px;
+}
+
+.dues-modal-card h2 {
+    color: var(--dark);
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.dues-modal-intro {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 22px;
+}
+
+
+/* Form */
+
+.dues-form-group {
+    margin-bottom: 15px;
+}
+
+.dues-form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--dark);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.dues-form-group input {
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 13px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.dues-form-group input::placeholder {
+    color: #9aa39a;
+}
+
+.dues-form-group input:focus {
+    border-color: #9ed39c;
+    box-shadow: 0 0 0 3px rgba(10, 200, 8, .08);
+}
+
+
+/* Check Button */
+
+.dues-check-button {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 4px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--primary);
+    color: #fff;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.dues-check-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+
+/* Demo Notice */
+
+.dues-demo-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: var(--light);
+    border: 1px solid var(--border);
+}
+
+.dues-demo-note span {
+    color: var(--primary-dark);
+    font-size: 15px;
+}
+
+.dues-demo-note p {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.45;
+}
+
+
+/* Result */
+
+.dues-result {
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+}
+
+.dues-result.success {
+    background: #f2fbf1;
+    border-color: #b9dfb7;
+}
+
+.dues-result.warning {
+    background: #fffaf0;
+    border-color: #efd98b;
+}
+
+.dues-result-heading {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 12px;
+}
+
+.dues-result-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 16px;
+}
+
+.dues-result.success .dues-result-icon {
+    background: #dff4dc;
+}
+
+.dues-result.warning .dues-result-icon {
+    background: #fff0bd;
+}
+
+.dues-result-heading strong {
+    color: var(--dark);
+    font-size: 14px;
+}
+
+.dues-result-name {
+    color: var(--dark);
+    font-size: 17px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.dues-result-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dues-result-details div {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.dues-result-details strong {
+    color: var(--dark);
+    text-align: right;
+}
+
+.dues-result-message {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(20, 60, 20, .09);
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn,
+    .hero-buttons .btn-dues {
+        width: 100%;
+    }
+
+    .dues-modal {
+        padding: 12px;
+    }
+
+    .dues-modal-card {
+        padding: 24px 20px;
+        border-radius: 18px;
+    }
+
+    .dues-modal-card h2 {
+        font-size: 22px;
+    }
+
+    .dues-result-details div {
+        flex-direction: column;
+        gap: 1px;
+    }
+
+    .dues-result-details strong {
+        text-align: left;
+    }
+}
