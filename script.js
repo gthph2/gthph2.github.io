@@ -643,3 +643,59 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+/* =========================================
+   GCASH PAYMENT QR MODAL
+   ========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const openPaymentQR = document.getElementById("openPaymentQR");
+    const closePaymentQR = document.getElementById("closePaymentQR");
+    const paymentModal = document.getElementById("paymentModal");
+    const paymentModalOverlay = document.getElementById("paymentModalOverlay");
+
+    if (!openPaymentQR || !paymentModal) {
+        return;
+    }
+
+    function openPaymentModal() {
+        paymentModal.classList.add("is-open");
+        paymentModal.setAttribute("aria-hidden", "false");
+
+        document.body.style.overflow = "hidden";
+
+        setTimeout(function () {
+            if (closePaymentQR) {
+                closePaymentQR.focus();
+            }
+        }, 50);
+    }
+
+    function closePaymentModal() {
+        paymentModal.classList.remove("is-open");
+        paymentModal.setAttribute("aria-hidden", "true");
+
+        document.body.style.overflow = "";
+    }
+
+    openPaymentQR.addEventListener("click", openPaymentModal);
+
+    if (closePaymentQR) {
+        closePaymentQR.addEventListener("click", closePaymentModal);
+    }
+
+    if (paymentModalOverlay) {
+        paymentModalOverlay.addEventListener("click", closePaymentModal);
+    }
+
+    document.addEventListener("keydown", function (event) {
+        if (
+            event.key === "Escape" &&
+            paymentModal.classList.contains("is-open")
+        ) {
+            closePaymentModal();
+        }
+    });
+
+});

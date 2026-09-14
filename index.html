@@ -52,12 +52,19 @@
         </div>
 
         <div class="hero-card">
-            <div class="hero-logo-wrap">
-                <img src="gth-logo.png" alt="GTH Phase 2 HOA Logo">
+            <div class="dues-card-icon" aria-hidden="true">💳</div>
+            <span class="hero-card-label">HOA DUES PAYMENT</span>
+            <h2>Keep your HOA dues up to date.</h2>
+            <p>Please remember to settle your HOA dues every <strong>10th &amp; 25th of the month.</strong></p>
+
+            <div class="hero-payment-note">
+                <span aria-hidden="true">📱</span>
+                <span>Pay conveniently through GCash.</span>
             </div>
-            <span class="hero-card-label">ONE COMMUNITY</span>
-            <h2>One goal. One passion.</h2>
-            <p>Working together with honesty, cooperation, dedication, and a shared commitment to our community.</p>
+
+            <button type="button" class="btn btn-payment" id="openPaymentQR">
+                Pay via GCash →
+            </button>
         </div>
     </div>
 </section>
@@ -118,6 +125,7 @@
         </div>
     </div>
 </section>
+
 
 <section class="section faq-section" id="faqs">
     <div class="container">
@@ -190,7 +198,6 @@
 <small>More details regarding registration, requirements, and implementation will be announced by the participating communities.</small>
 </div></div>
 </div></section>
-
 <section class="section announcements-section" id="announcements">
     <div class="container">
         <div class="section-heading">
@@ -200,7 +207,6 @@
         </div>
 
         <div class="announcement-grid">
-
             <article class="announcement-card">
                 <div class="announcement-info-icon" aria-hidden="true">i</div>
                 <div class="announcement-content">
@@ -221,30 +227,16 @@
 
             <article class="announcement-card featured-announcement">
                 <div class="announcement-date announcement-date-yellow">
-                    <span class="month">OCT</span>
-                    <strong>18</strong>
+                    <span class="month">SEP</span>
+                    <strong>12</strong>
                 </div>
                 <div class="announcement-content">
-                    <span class="announcement-tag">COMMUNITY EVENT</span>
-                    <h3>Halloween Kids Party 🎃</h3>
-                    <p><strong>October 18, 2026 · 4:00 PM</strong><br>GTH Phase 2 Clubhouse</p>
-                    <span class="event-note">Get the kids ready for a fun-filled Halloween celebration!</span>
+                    <span class="announcement-tag">GENERAL ASSEMBLY</span>
+                    <h3>General Assembly</h3>
+                    <p><strong>September 12, 2026 · 3:00 PM</strong><br>GTH Phase 2 Clubhouse</p>
+                    <span class="event-note">Please save the date and join us.</span>
                 </div>
             </article>
-
-            <article class="announcement-card">
-                <div class="announcement-date announcement-date-yellow">
-                    <span class="month">DEC</span>
-                    <strong>6</strong>
-                </div>
-                <div class="announcement-content">
-                    <span class="announcement-tag">COMMUNITY EVENT</span>
-                    <h3>Christmas Party 🎄</h3>
-                    <p><strong>December 6, 2026 · 4:00 PM</strong><br>GTH Phase 2 Clubhouse</p>
-                    <span class="event-note">Save the date and celebrate the season together with our GTH Phase 2 community!</span>
-                </div>
-            </article>
-
         </div>
     </div>
 </section>
@@ -396,7 +388,6 @@
 </footer>
 
 <script src="script.js"></script>
-
 <!-- HOA Dues Demo Modal -->
 <div class="dues-modal" id="duesModal" aria-hidden="true">
     <div class="dues-modal-overlay" id="duesModalOverlay"></div>
@@ -462,32 +453,74 @@
 
     </div>
 </div>
+<!-- GCash Payment QR Modal -->
+<div class="payment-modal" id="paymentModal" aria-hidden="true">
+    <div class="payment-modal-overlay" id="paymentModalOverlay"></div>
 
-<!-- Floating Halloween Announcement -->
-<div class="floating-announcement" id="floatingAnnouncement" aria-live="polite">
-    <div class="floating-announcement-expanded" id="floatingAnnouncementExpanded">
-        <div class="floating-announcement-header">
-            <div class="floating-announcement-title">
-                <span>📢</span>
-                <span>IMPORTANT ANNOUNCEMENT</span>
-            </div>
-            <button class="floating-close" id="floatingClose" type="button" aria-label="Minimize announcement">×</button>
+    <div class="payment-modal-card" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle">
+
+        <button
+            type="button"
+            class="payment-modal-close"
+            id="closePaymentQR"
+            aria-label="Close GCash payment popup">
+            ×
+        </button>
+
+        <div class="payment-modal-icon">📱</div>
+
+        <span class="payment-modal-label">HOA DUES PAYMENT</span>
+
+        <h2 id="paymentModalTitle">Pay via GCash</h2>
+
+        <p class="payment-modal-intro">
+            Save this QR code to your phone, then upload it in GCash to make your payment.
+        </p>
+
+        <div class="payment-qr-wrapper">
+            <img
+                src="hoa-dues-qr.jpg"
+                alt="GCash QR code for HOA dues payment"
+                class="payment-qr">
+
+            <a
+                href="hoa-dues-qr.jpg"
+                download="hoa-dues-gcash-qr.jpg"
+                class="btn btn-download-qr"
+                id="downloadPaymentQR">
+                <span aria-hidden="true">⬇️</span>
+                Download QR Code
+            </a>
         </div>
 
-        <div class="floating-announcement-body">
-            <span class="floating-tag">COMMUNITY EVENT</span>
-            <h3>Halloween Kids Party 🎃</h3>
-            <div class="floating-details">
-                <span>📅 October 18, 2026</span>
-                <span>🕒 4:00 PM</span>
-                <span>📍 GTH Phase 2 Clubhouse</span>
+        <div class="payment-schedule">
+            <span aria-hidden="true">📅</span>
+            <div>
+                <strong>Payment Schedule</strong>
+                <p>Every 10th &amp; 25th of the month</p>
             </div>
-            <a href="#announcements" class="floating-link">View Announcement →</a>
         </div>
+
+        <div class="payment-reminder">
+            <span aria-hidden="true">ⓘ</span>
+            <p>
+                After making your payment, please follow the HOA's payment
+                confirmation process and include your house/unit information
+                when required.
+            </p>
+        </div>
+
     </div>
-
-    <button class="floating-announcement-collapsed" id="floatingCollapsed" type="button" aria-label="Open important announcement">📢</button>
 </div>
 
+<div class="floating-announcement" id="floatingAnnouncement" aria-live="polite">
+<div class="floating-announcement-expanded" id="floatingAnnouncementExpanded">
+<div class="floating-announcement-header"><div class="floating-announcement-title"><span>📢</span><span>IMPORTANT ANNOUNCEMENT</span></div>
+<button class="floating-close" id="floatingClose" type="button" aria-label="Minimize announcement">×</button></div>
+<div class="floating-announcement-body"><span class="floating-tag">GENERAL ASSEMBLY</span><h3>General Assembly</h3>
+<div class="floating-details"><span>📅 September 12, 2026</span><span>🕒 3:00 PM</span><span>📍 GTH Phase 2 Clubhouse</span></div>
+<a href="#announcements" class="floating-link">View Announcement →</a></div></div>
+<button class="floating-announcement-collapsed" id="floatingCollapsed" type="button" aria-label="Open important announcement">📢</button>
+</div>
 </body>
 </html>
