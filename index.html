@@ -119,7 +119,6 @@
     </div>
 </section>
 
-
 <section class="section faq-section" id="faqs">
     <div class="container">
         <div class="section-heading">
@@ -191,6 +190,7 @@
 <small>More details regarding registration, requirements, and implementation will be announced by the participating communities.</small>
 </div></div>
 </div></section>
+
 <section class="section announcements-section" id="announcements">
     <div class="container">
         <div class="section-heading">
@@ -200,6 +200,7 @@
         </div>
 
         <div class="announcement-grid">
+
             <article class="announcement-card">
                 <div class="announcement-info-icon" aria-hidden="true">i</div>
                 <div class="announcement-content">
@@ -220,16 +221,30 @@
 
             <article class="announcement-card featured-announcement">
                 <div class="announcement-date announcement-date-yellow">
-                    <span class="month">SEP</span>
-                    <strong>12</strong>
+                    <span class="month">OCT</span>
+                    <strong>18</strong>
                 </div>
                 <div class="announcement-content">
-                    <span class="announcement-tag">GENERAL ASSEMBLY</span>
-                    <h3>General Assembly</h3>
-                    <p><strong>September 12, 2026 · 3:00 PM</strong><br>GTH Phase 2 Clubhouse</p>
-                    <span class="event-note">Please save the date and join us.</span>
+                    <span class="announcement-tag">COMMUNITY EVENT</span>
+                    <h3>Halloween Kids Party 🎃</h3>
+                    <p><strong>October 18, 2026 · 4:00 PM</strong><br>GTH Phase 2 Clubhouse</p>
+                    <span class="event-note">Get the kids ready for a fun-filled Halloween celebration!</span>
                 </div>
             </article>
+
+            <article class="announcement-card">
+                <div class="announcement-date announcement-date-yellow">
+                    <span class="month">DEC</span>
+                    <strong>6</strong>
+                </div>
+                <div class="announcement-content">
+                    <span class="announcement-tag">COMMUNITY EVENT</span>
+                    <h3>Christmas Party 🎄</h3>
+                    <p><strong>December 6, 2026 · 4:00 PM</strong><br>GTH Phase 2 Clubhouse</p>
+                    <span class="event-note">Save the date and celebrate the season together with our GTH Phase 2 community!</span>
+                </div>
+            </article>
+
         </div>
     </div>
 </section>
@@ -381,6 +396,7 @@
 </footer>
 
 <script src="script.js"></script>
+
 <!-- HOA Dues Demo Modal -->
 <div class="dues-modal" id="duesModal" aria-hidden="true">
     <div class="dues-modal-overlay" id="duesModalOverlay"></div>
@@ -446,14 +462,32 @@
 
     </div>
 </div>
+
+<!-- Floating Halloween Announcement -->
 <div class="floating-announcement" id="floatingAnnouncement" aria-live="polite">
-<div class="floating-announcement-expanded" id="floatingAnnouncementExpanded">
-<div class="floating-announcement-header"><div class="floating-announcement-title"><span>📢</span><span>IMPORTANT ANNOUNCEMENT</span></div>
-<button class="floating-close" id="floatingClose" type="button" aria-label="Minimize announcement">×</button></div>
-<div class="floating-announcement-body"><span class="floating-tag">GENERAL ASSEMBLY</span><h3>General Assembly</h3>
-<div class="floating-details"><span>📅 September 12, 2026</span><span>🕒 3:00 PM</span><span>📍 GTH Phase 2 Clubhouse</span></div>
-<a href="#announcements" class="floating-link">View Announcement →</a></div></div>
-<button class="floating-announcement-collapsed" id="floatingCollapsed" type="button" aria-label="Open important announcement">📢</button>
+    <div class="floating-announcement-expanded" id="floatingAnnouncementExpanded">
+        <div class="floating-announcement-header">
+            <div class="floating-announcement-title">
+                <span>📢</span>
+                <span>IMPORTANT ANNOUNCEMENT</span>
+            </div>
+            <button class="floating-close" id="floatingClose" type="button" aria-label="Minimize announcement">×</button>
+        </div>
+
+        <div class="floating-announcement-body">
+            <span class="floating-tag">COMMUNITY EVENT</span>
+            <h3>Halloween Kids Party 🎃</h3>
+            <div class="floating-details">
+                <span>📅 October 18, 2026</span>
+                <span>🕒 4:00 PM</span>
+                <span>📍 GTH Phase 2 Clubhouse</span>
+            </div>
+            <a href="#announcements" class="floating-link">View Announcement →</a>
+        </div>
+    </div>
+
+    <button class="floating-announcement-collapsed" id="floatingCollapsed" type="button" aria-label="Open important announcement">📢</button>
 </div>
+
 </body>
 </html>
