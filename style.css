@@ -1848,7 +1848,7 @@ a { color: inherit; text-decoration: none; }
 .payment-qr-wrapper {
     width: 220px;
     height: 220px;
-    margin: 0 auto 48px;
+    margin: 0 auto 18px;
     padding: 10px;
     border: 2px solid #e4ebe2;
     border-radius: 16px;
@@ -1934,32 +1934,5 @@ a { color: inherit; text-decoration: none; }
     .payment-qr-wrapper {
         width: min(210px, 70vw);
         height: min(210px, 70vw);
-    }
-}
-
-
-/* =========================================================
-   GCash QR DOWNLOAD BUTTON
-   ========================================================= */
-
-.btn-download-qr {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    margin-top: 14px;
-    padding: 12px 18px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.btn-download-qr:hover {
-    text-decoration: none;
-}
-
-@media (max-width: 500px) {
-    .btn-download-qr {
-        width: 100%;
     }
 }
