@@ -1385,7 +1385,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Modal Card */
 
-.dues-modal-card {
+.dues-modal-content {
     position: relative;
     z-index: 1;
     width: min(460px, 100%);
@@ -1457,14 +1457,14 @@ a { color: inherit; text-decoration: none; }
     letter-spacing: 1.3px;
 }
 
-.dues-modal-card h2 {
+.dues-modal-content h2 {
     color: var(--dark);
     font-size: 25px;
     line-height: 1.2;
     margin-bottom: 8px;
 }
 
-.dues-modal-intro {
+.dues-modal-description {
     color: var(--muted);
     font-size: 13px;
     line-height: 1.55;
@@ -1474,11 +1474,11 @@ a { color: inherit; text-decoration: none; }
 
 /* Form */
 
-.dues-form-group {
+.dues-field {
     margin-bottom: 15px;
 }
 
-.dues-form-group label {
+.dues-field label {
     display: block;
     margin-bottom: 6px;
     color: var(--dark);
@@ -1486,7 +1486,7 @@ a { color: inherit; text-decoration: none; }
     font-weight: 800;
 }
 
-.dues-form-group input {
+.dues-field input {
     width: 100%;
     min-height: 48px;
     padding: 11px 13px;
@@ -1500,11 +1500,11 @@ a { color: inherit; text-decoration: none; }
     transition: border-color .2s ease, box-shadow .2s ease;
 }
 
-.dues-form-group input::placeholder {
+.dues-field input::placeholder {
     color: #9aa39a;
 }
 
-.dues-form-group input:focus {
+.dues-field input:focus {
     border-color: #9ed39c;
     box-shadow: 0 0 0 3px rgba(10, 200, 8, .08);
 }
@@ -1512,7 +1512,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Check Button */
 
-.dues-check-button {
+.dues-submit {
     width: 100%;
     min-height: 48px;
     margin-top: 4px;
@@ -1527,7 +1527,7 @@ a { color: inherit; text-decoration: none; }
     transition: background .2s ease, transform .2s ease;
 }
 
-.dues-check-button:hover {
+.dues-submit:hover {
     background: var(--primary-dark);
     transform: translateY(-1px);
 }
@@ -1535,7 +1535,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Demo Notice */
 
-.dues-demo-note {
+.dues-help-note {
     display: flex;
     align-items: flex-start;
     gap: 8px;
@@ -1546,12 +1546,12 @@ a { color: inherit; text-decoration: none; }
     border: 1px solid var(--border);
 }
 
-.dues-demo-note span {
+.dues-help-note span {
     color: var(--primary-dark);
     font-size: 15px;
 }
 
-.dues-demo-note p {
+.dues-help-note p {
     color: var(--muted);
     font-size: 10px;
     line-height: 1.45;
@@ -1660,12 +1660,12 @@ a { color: inherit; text-decoration: none; }
         padding: 12px;
     }
 
-    .dues-modal-card {
+    .dues-modal-content {
         padding: 24px 20px;
         border-radius: 18px;
     }
 
-    .dues-modal-card h2 {
+    .dues-modal-content h2 {
         font-size: 22px;
     }
 

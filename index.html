@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Georgetown Heights Executive Homes Phase 2 Homeowners Association Portal">
     <title>GTH Phase 2 HOA Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.2">
+	<link rel="stylesheet" href="hoa-dues-phase1.css">
 </head>
 <body>
 
@@ -401,70 +402,123 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="hoa-dues.js"></script>
 <!-- HOA Dues Demo Modal -->
+<!-- =========================================
+     HOA DUES MODAL
+     ========================================= -->
+
 <div class="dues-modal" id="duesModal" aria-hidden="true">
+
     <div class="dues-modal-overlay" id="duesModalOverlay"></div>
 
-    <div class="dues-modal-card" role="dialog" aria-modal="true" aria-labelledby="duesModalTitle">
+    <div class="dues-modal-content" role="dialog" aria-modal="true" aria-labelledby="duesModalTitle">
 
         <button
             type="button"
             class="dues-modal-close"
             id="closeDuesModal"
-            aria-label="Close HOA dues popup">
+            aria-label="Close HOA dues"
+        >
             ×
         </button>
 
-        <div class="dues-modal-icon">💰</div>
 
-        <span class="dues-modal-label">DEMONSTRATION ONLY</span>
+        <div class="dues-modal-icon" aria-hidden="true">
+            💰
+        </div>
 
-        <h2 id="duesModalTitle">HOA Dues Status Demo</h2>
 
-        <p class="dues-modal-intro">
-            This demonstration does not access homeowner records or verify payment status.
+        <span class="dues-modal-label">
+            HOA ACCOUNT
+        </span>
+
+
+        <h2 id="duesModalTitle">
+            My HOA Dues
+        </h2>
+
+
+        <p class="dues-modal-description">
+            Check your current HOA dues status, payment history,
+            and outstanding balance.
         </p>
 
-        <form id="duesForm">
 
-            <div class="dues-form-group">
-                <label for="duesSurname">Surname</label>
+        <form id="duesForm" class="dues-form">
+
+            <div class="dues-field">
+
+                <label for="duesSurname">
+                    Surname
+                </label>
+
                 <input
                     type="text"
                     id="duesSurname"
                     name="surname"
                     placeholder="Enter surname"
                     autocomplete="family-name"
-                    required>
+                    required
+                >
+
             </div>
 
-            <div class="dues-form-group">
-                <label for="duesCode">Homeowner Code</label>
+
+            <div class="dues-field">
+
+                <label for="duesCode">
+                    Homeowner Code
+                </label>
+
                 <input
                     type="text"
                     id="duesCode"
-                    name="code"
-                    placeholder="e.g. GTH-7K4P92"
+                    name="homeownerCode"
+                    placeholder="Enter homeowner code"
                     autocomplete="off"
-                    required>
+                    required
+                >
+
             </div>
 
-            <button type="submit" class="dues-check-button">
-                View Sample Status →
+
+            <button
+                type="submit"
+                class="dues-submit"
+            >
+                View My Dues →
             </button>
 
         </form>
 
-        <div class="dues-demo-note">
-            <span>ⓘ</span>
-            <p>Use sample values only. For an actual balance inquiry, contact HOA Admin through the number listed on this portal.</p>
+
+        <div class="dues-help-note">
+
+            <span aria-hidden="true">
+                ⓘ
+            </span>
+
+            <p>
+                Enter the surname and unique homeowner code
+                assigned to your property.
+            </p>
+
         </div>
 
-        <div class="dues-result" id="duesResult" hidden>
-            <!-- Result is inserted by script.js -->
-        </div>
+
+        <!-- Result populated by hoa-dues.js -->
+
+        <div
+            class="dues-result"
+            id="duesResult"
+            hidden
+            aria-live="polite"
+        ></div>
+
 
     </div>
+
 </div>
 <!-- GCash Payment QR Modal -->
 <div class="payment-modal" id="paymentModal" aria-hidden="true">
