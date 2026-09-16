@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
        CONFIGURATION
        ========================================= */
 
+    // Google Apps Script API - live HOA dues source
     const HOA_DUES_API =
         "https://script.google.com/macros/s/AKfycbwVYPvC1Qh_qsO9EzNrEGAzzjc0dClemol-bw6PKUphiwKZhGSEZ0PjT0eECfGgoX1-/exec";
 
@@ -46,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         !duesForm ||
         !duesResult
     ) {
+
         console.error(
             "HOA Dues: Required HTML elements were not found."
         );
@@ -230,86 +232,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /*
-         * IMPORTANT:
+         * 2026 monthly status is based directly
+         * on the January-December payment values
+         * returned by the API.
          *
-         * paidThrough is the authoritative source
-         * when available.
-         *
-         * The monthly payment breakdown is only
-         * the fallback.
-         */
-
-        if (
-            record.paidThrough &&
-            record.paidThrough.month &&
-            record.paidThrough.year
-        ) {
-
-            const paidThroughYear =
-                Number(record.paidThrough.year);
-
-            const paidThroughMonth =
-                months.indexOf(
-                    record.paidThrough.month
-                );
-
-
-            return months.map(function (month, index) {
-
-                let paid = false;
-
-
-                /*
-                 * Paid through a month in 2026
-                 */
-
-                if (
-                    paidThroughYear === 2026
-                ) {
-
-                    paid =
-                        index <= paidThroughMonth;
-                }
-
-
-                /*
-                 * Paid beyond 2026 means
-                 * all 2026 months are paid.
-                 */
-
-                else if (
-                    paidThroughYear > 2026
-                ) {
-
-                    paid = true;
-                }
-
-
-                /*
-                 * Paid through a previous year
-                 * means no 2026 months are covered.
-                 */
-
-                else {
-
-                    paid = false;
-                }
-
-
-                return {
-                    name: month,
-                    paid: paid,
-                    amount: paid ? 300 : 0
-                };
-            });
-        }
-
-
-        /*
-         * FALLBACK:
-         *
-         * If there is no paidThrough information,
-         * use the actual monthly payment breakdown.
+         * paidThrough is NOT used to override
+         * the individual 2026 monthly values.
          */
 
         return months.map(function (month) {
@@ -326,6 +254,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 paid: value > 0,
                 amount: value
             };
+
         });
     }
 
@@ -561,7 +490,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       RENDER RESULT
+       RESULT DISPLAY
        ========================================= */
 
     function renderResult(record) {
@@ -618,7 +547,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             duesResult.hidden = false;
 
-
             return;
         }
 
@@ -636,12 +564,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /*
-         * IMPORTANT:
-         *
-         * Calculate this from authoritative
-         * paidThrough information rather than
-         * trusting potentially inconsistent
-         * monthly raw values.
+         * Calculate total paid from the actual
+         * January-December 2026 payment values.
          */
 
         const totalPaid2026 =
@@ -784,8 +708,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     </strong>
 
                     <p>
-                        Your HOA dues are currently
-                        paid ahead.
+                        Your 2026 HOA dues are fully paid,
+                        with advance payment recorded through
+                        ${escapeHtml(
+                            getPaidThroughLabel(record)
+                        )}.
                     </p>
 
                 </div>
@@ -814,8 +741,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </span>
 
                     <strong>
-                        PAID THROUGH
-                        DECEMBER 2026
+                        2026 DUES FULLY PAID
                     </strong>
 
                 </div>
@@ -829,7 +755,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         /* =====================================
            RESULT
-           ========================================= */
+           ===================================== */
 
         duesResult.className =
             "dues-result " +
@@ -931,7 +857,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             ${
-                record.evaluatedRemarks
+                record.originalRemarks
 
                     ? `
 
@@ -939,7 +865,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             class="dues-result-note"
                         >
                             ${escapeHtml(
-                                record.evaluatedRemarks
+                                record.originalRemarks
                             )}
                         </p>
 
