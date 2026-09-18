@@ -135,18 +135,6 @@
             "category": "Security",
             "question": "What should I do if I see an issue at the subdivision gate?",
             "answer": "Please report the issue to the security personnel and, when appropriate, submit a concern to the HOA so the matter can be documented and followed up."
-        },
-        {
-            "id": "documents-001",
-            "category": "Documents",
-            "question": "Where can I find HOA documents?",
-            "answer": "Available HOA documents are provided in the Documents section of this portal. Additional documents may be added as they become available."
-        },
-        {
-            "id": "documents-002",
-            "category": "Documents",
-            "question": "Where can I find the HOA By-Laws?",
-            "answer": "The HOA By-Laws can be accessed through the Documents section of the portal when the document is available online."
         }
     ]
 }

@@ -235,12 +235,50 @@
                 <div class="announcement-content">
                     <span class="announcement-tag">UPCOMING EVENT</span>
                     <h3>Halloween Kids Party</h3>
-                    <p><strong>October 18, 2026 · 4:00 PM</strong><br>GTH Phase 2 Clubhouse</p>
+                    <p><strong>October 18, 2026 · 4:00 PM</strong><br>To be announced, within GTH Phase 2</p>
                     <span class="event-note">Get ready for a fun-filled Halloween celebration for the kids!</span>
                 </div>
             </article>
 
             <article class="announcement-card">
+                <div class="announcement-date announcement-date-yellow">
+                    <span class="month">Sep</span>
+                    <strong>26</strong>
+                </div>
+                <div class="announcement-content">
+                    <span class="announcement-tag">COMMUNITY BAYANIHAN</span>
+                    <h3>Animal Shelter Project</h3>
+                    <p><strong>September 26, 2026</strong><br>Beverly Street cor. Georgia St.</p>
+					<span class="event-note">Pawsitive Bayanihan: Budget man o Manpower, Malaking Tulong Na!</span>
+                </div>
+            </article>
+			
+			<article class="announcement-card">
+                <div class="announcement-date announcement-date-yellow">
+                    <span class="month"></span>
+                    <strong>TBA</strong>
+                </div>
+                <div class="announcement-content">
+                    <span class="announcement-tag">COMMUNITY BAYANIHAN</span>
+                    <h3>Guard House Renovation</h3>
+                    <p><strong>Planning In Progress</strong><br>Guard House GTH Phase 2</p>
+                    <span class="event-note">Bagong Mukha para sa Ating Guard House: Tara, Tulong-Tulong Tayo!</span>
+                </div>
+            </article>
+			
+			<article class="announcement-card">
+                <div class="announcement-date announcement-date-yellow">
+                    <span class="month"></span>
+                    <strong>TBA</strong>
+                </div>
+                <div class="announcement-content">
+                    <span class="announcement-tag">LIVELIHOOD PROJECT</span>
+                    <h3>Christmas Bazaar</h3>
+                    <p><strong>December 2026</strong><br>To be announced, within GTH Phase 2</p>
+                    <span class="event-note">Gusto Mo Ba Mag-Extra Income This Holidays? Tara, Sali Na sa Ating Christmas Bazaar!</span>
+                </div>
+            </article>
+			<article class="announcement-card">
                 <div class="announcement-date announcement-date-yellow">
                     <span class="month">DEC</span>
                     <strong>6</strong>
@@ -248,7 +286,7 @@
                 <div class="announcement-content">
                     <span class="announcement-tag">UPCOMING EVENT</span>
                     <h3>Christmas Party</h3>
-                    <p><strong>December 6, 2026 · 4:00 PM</strong><br>GTH Phase 2 Clubhouse</p>
+                    <p><strong>December 6, 2026 · 4:00 PM</strong><br>To be announced, within GTH Phase 2</p>
                     <span class="event-note">Let's celebrate the Christmas season together as one community!</span>
                 </div>
             </article>
@@ -404,123 +442,64 @@
 
 <script src="script.js"></script>
 <script src="hoa-dues.js"></script>
-<!-- HOA Dues Demo Modal -->
-<!-- =========================================
-     HOA DUES MODAL
-     ========================================= -->
-
+<!-- Temporary HOA Dues Feature Notice Modal -->
 <div class="dues-modal" id="duesModal" aria-hidden="true">
-
     <div class="dues-modal-overlay" id="duesModalOverlay"></div>
 
-    <div class="dues-modal-content" role="dialog" aria-modal="true" aria-labelledby="duesModalTitle">
+    <div class="dues-modal-content" role="dialog" aria-modal="true" aria-labelledby="duesModalTitle"
+         style="text-align:center;">
 
-        <button
-            type="button"
-            class="dues-modal-close"
-            id="closeDuesModal"
-            aria-label="Close HOA dues"
-        >
-            ×
-        </button>
+        <button type="button" class="dues-modal-close" id="closeDuesModal"
+                aria-label="Close HOA dues notice">×</button>
 
-
-        <div class="dues-modal-icon" aria-hidden="true">
-            💰
+        <div class="dues-build-illustration" style="display:flex; justify-content:center; align-items:center; margin:0 auto 1rem;">
+            <img src="hoa-dues-build-illustration.png"
+                 alt="Illustration of a browser window, gear, and construction cone"
+                 style="display:block; width:min(100%, 210px); height:auto; object-fit:contain;">
         </div>
 
+        <span class="dues-modal-label" style="display:block; text-align:center;">HOA ACCOUNT</span>
 
-        <span class="dues-modal-label">
-            HOA ACCOUNT
-        </span>
+        <h2 id="duesModalTitle" style="text-align:center;">My HOA Dues</h2>
 
+        <div style="display:inline-block; margin:0.25rem auto 1rem; padding:0.4rem 0.9rem; border-radius:999px; background:#fff3cd; color:#805b12; font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-align:center;">
+            IN PROGRESS
+        </div>
 
-        <h2 id="duesModalTitle">
-            My HOA Dues
-        </h2>
-
-
-        <p class="dues-modal-description">
-            Check your current HOA dues status, payment history,
-            and outstanding balance.
+        <p class="dues-modal-description" style="text-align:center;">
+            Your HOA dues information will be displayed here soon, but this feature is currently in build mode.
         </p>
 
+        <p style="margin:1rem 0; text-align:center; color:#5f6f68;">
+            Please wait for the HOA’s announcement once this feature is ready for use.
+        </p>
 
-        <form id="duesForm" class="dues-form">
-
-            <div class="dues-field">
-
-                <label for="duesSurname">
-                    Surname
-                </label>
-
-                <input
-                    type="text"
-                    id="duesSurname"
-                    name="surname"
-                    placeholder="Enter surname"
-                    autocomplete="family-name"
-                    required
-                >
-
-            </div>
-
-
-            <div class="dues-field">
-
-                <label for="duesCode">
-                    Homeowner Code
-                </label>
-
-                <input
-                    type="text"
-                    id="duesCode"
-                    name="homeownerCode"
-                    placeholder="Enter homeowner code"
-                    autocomplete="off"
-                    required
-                >
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="dues-submit"
-            >
-                View My Dues →
-            </button>
-
-        </form>
-
-
-        <div class="dues-help-note">
-
-            <span aria-hidden="true">
-                ⓘ
-            </span>
-
-            <p>
-                Enter the surname and unique homeowner code
-                assigned to your property.
+        <div class="dues-help-note" style="display:flex; justify-content:center; align-items:center; gap:0.75rem; text-align:center;">
+            <span aria-hidden="true">ⓘ</span>
+            <p style="margin:0; text-align:center;">
+                Thank you for your understanding and continued support!
             </p>
-
         </div>
 
-
-        <!-- Result populated by hoa-dues.js -->
-
-        <div
-            class="dues-result"
-            id="duesResult"
-            hidden
-            aria-live="polite"
-        ></div>
-
-
+        <!-- Hidden legacy form retained for hoa-dues.js ID compatibility.
+             It is not visible or available for homeowner submission. -->
+        <div hidden aria-hidden="true">
+            <form id="duesForm" class="dues-form">
+                <div class="dues-field">
+                    <label for="duesSurname">Surname</label>
+                    <input type="text" id="duesSurname" name="surname" autocomplete="family-name">
+                </div>
+                <div class="dues-field">
+                    <label for="duesCode">Homeowner Code</label>
+                    <input type="text" id="duesCode" name="homeownerCode" autocomplete="off">
+                </div>
+                <button type="submit" class="dues-submit">View My Dues →</button>
+            </form>
+            <div class="dues-result" id="duesResult" hidden aria-live="polite"></div>
+        </div>
     </div>
-
 </div>
+
 <!-- GCash Payment QR Modal -->
 <div class="payment-modal" id="paymentModal" aria-hidden="true">
     <div class="payment-modal-overlay" id="paymentModalOverlay"></div>
@@ -586,7 +565,7 @@
 <div class="floating-announcement-header"><div class="floating-announcement-title"><span>📢</span><span>IMPORTANT ANNOUNCEMENT</span></div>
 <button class="floating-close" id="floatingClose" type="button" aria-label="Minimize announcement">×</button></div>
 <div class="floating-announcement-body"><span class="floating-tag">UPCOMING EVENT</span><h3>Halloween Kids Party</h3>
-<div class="floating-details"><span>📅 October 18, 2026</span><span>🕒 4:00 PM</span><span>📍 GTH Phase 2 Clubhouse</span></div>
+<div class="floating-details"><span>📅 October 18, 2026</span><span>🕒 4:00 PM</span><span>📍 To be announced, within GTH Phase 2</span></div>
 <a href="#announcements" class="floating-link">View Announcement →</a></div></div>
 <button class="floating-announcement-collapsed" id="floatingCollapsed" type="button" aria-label="Open important announcement">📢</button>
 </div>
