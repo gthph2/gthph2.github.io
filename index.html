@@ -457,60 +457,70 @@
 
 <script src="script.js"></script>
 <script src="hoa-dues.js"></script>
-<!-- Temporary HOA Dues Feature Notice Modal -->
+<!-- HOA Dues Status Modal -->
 <div class="dues-modal" id="duesModal" aria-hidden="true">
     <div class="dues-modal-overlay" id="duesModalOverlay"></div>
 
-    <div class="dues-modal-content" role="dialog" aria-modal="true" aria-labelledby="duesModalTitle"
-         style="text-align:center;">
-
+    <div class="dues-modal-content" role="dialog" aria-modal="true" aria-labelledby="duesModalTitle">
         <button type="button" class="dues-modal-close" id="closeDuesModal"
-                aria-label="Close HOA dues notice">×</button>
+                aria-label="Close HOA dues window">×</button>
 
-        <div class="dues-build-illustration" style="display:flex; justify-content:center; align-items:center; margin:0 auto 1rem;">
-            <img src="hoa-dues-build-illustration.png"
-                 alt="Illustration of a browser window, gear, and construction cone"
-                 style="display:block; width:min(100%, 210px); height:auto; object-fit:contain;">
-        </div>
+        <!-- Keep this notice available for future maintenance.
+             It is hidden during normal operation. Remove the hidden attribute
+             below if the HOA dues feature needs to be marked IN PROGRESS again. -->
+        <div id="duesProgressNotice" hidden style="text-align:center;">
+            <div class="dues-build-illustration" style="display:flex; justify-content:center; align-items:center; margin:0 auto 1rem;">
+                <img src="hoa-dues-build-illustration.png"
+                     alt="Illustration of a browser window, gear, and construction cone"
+                     style="display:block; width:min(100%, 210px); height:auto; object-fit:contain;">
+            </div>
 
-        <span class="dues-modal-label" style="display:block; text-align:center;">HOA ACCOUNT</span>
+            <span class="dues-modal-label" style="display:block; text-align:center;">HOA ACCOUNT</span>
+            <h2 style="text-align:center;">My HOA Dues</h2>
 
-        <h2 id="duesModalTitle" style="text-align:center;">My HOA Dues</h2>
+            <div style="display:inline-block; margin:0.25rem auto 1rem; padding:0.4rem 0.9rem; border-radius:999px; background:#fff3cd; color:#805b12; font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-align:center;">
+                IN PROGRESS
+            </div>
 
-        <div style="display:inline-block; margin:0.25rem auto 1rem; padding:0.4rem 0.9rem; border-radius:999px; background:#fff3cd; color:#805b12; font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-align:center;">
-            IN PROGRESS
-        </div>
-
-        <p class="dues-modal-description" style="text-align:center;">
-            Your HOA dues information will be displayed here soon, but this feature is currently in build mode.
-        </p>
-
-        <p style="margin:1rem 0; text-align:center; color:#5f6f68;">
-            Please wait for the HOA’s announcement once this feature is ready for use.
-        </p>
-
-        <div class="dues-help-note" style="display:flex; justify-content:center; align-items:center; gap:0.75rem; text-align:center;">
-            <span aria-hidden="true">ⓘ</span>
-            <p style="margin:0; text-align:center;">
-                Thank you for your understanding and continued support!
+            <p class="dues-modal-description" style="text-align:center;">
+                Your HOA dues information will be displayed here soon, but this feature is currently in build mode.
             </p>
+            <p style="margin:1rem 0; text-align:center; color:#5f6f68;">
+                Please wait for the HOA’s announcement once this feature is ready for use.
+            </p>
+            <div class="dues-help-note" style="display:flex; justify-content:center; align-items:center; gap:0.75rem; text-align:center;">
+                <span aria-hidden="true">ⓘ</span>
+                <p style="margin:0; text-align:center;">Thank you for your understanding and continued support!</p>
+            </div>
         </div>
 
-        <!-- Hidden legacy form retained for hoa-dues.js ID compatibility.
-             It is not visible or available for homeowner submission. -->
-        <div hidden aria-hidden="true">
+        <!-- Active HOA dues lookup -->
+        <div class="dues-lookup-panel">
+            <span class="dues-modal-label">HOA ACCOUNT</span>
+            <h2 id="duesModalTitle">My HOA Dues</h2>
+            <p class="dues-modal-description">
+                Enter your surname and homeowner code to view your recorded HOA dues status.
+            </p>
+
             <form id="duesForm" class="dues-form">
                 <div class="dues-field">
                     <label for="duesSurname">Surname</label>
-                    <input type="text" id="duesSurname" name="surname" autocomplete="family-name">
+                    <input type="text" id="duesSurname" name="surname"
+                           autocomplete="family-name" required>
                 </div>
                 <div class="dues-field">
                     <label for="duesCode">Homeowner Code</label>
-                    <input type="text" id="duesCode" name="homeownerCode" autocomplete="off">
+                    <input type="password" id="duesCode" name="homeownerCode"
+                           autocomplete="off" required>
                 </div>
                 <button type="submit" class="dues-submit">View My Dues →</button>
             </form>
+
             <div class="dues-result" id="duesResult" hidden aria-live="polite"></div>
+            <p class="dues-help-note">
+                <span aria-hidden="true">ⓘ</span>
+                For privacy, please keep your homeowner code confidential.
+            </p>
         </div>
     </div>
 </div>
