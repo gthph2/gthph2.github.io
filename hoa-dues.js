@@ -235,11 +235,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function renderUpdateDisclaimer() {
         return `
-            <div class="dues-note-card dues-update-disclaimer" role="note">
-                <span class="dues-note-icon" aria-hidden="true">i</span>
-                <div>
-                    <strong>Important note about update timing</strong>
+            <div class="dues-important-notes" role="note">
+                <div class="dues-important-notes-heading">Important Notes</div>
+                <div class="dues-important-note">
+                    <div class="dues-important-note-label">Record updates</div>
                     <p>Due to current administrative capacity, HOA dues records are updated at the end of each month. Recent payments or adjustments may not yet be reflected. For the latest confirmation, please contact the HOA Administration.</p>
+                </div>
+                <div class="dues-important-note dues-important-note-privacy">
+                    <div class="dues-important-note-label">Account privacy</div>
+                    <p>For privacy, please keep your homeowner code confidential.</p>
                 </div>
             </div>
         `;
@@ -257,12 +261,11 @@ document.addEventListener("DOMContentLoaded", function () {
             duesResult.innerHTML = `
                 ${renderHeader(record, "HOA VERIFICATION REQUIRED", "i")}
                 <div class="dues-result-body">
-                    <div class="dues-message-card">
-                        <strong>HOA verification is required for historical balances.</strong>
+                    <div class="dues-historical-verification-card">
+                        <div class="dues-historical-verification-title">HOA VERIFICATION REQUIRED</div>
                         <p>Your recorded unpaid balance includes a period before January 2026. To avoid showing an unverified amount, please contact the HOA Administration to confirm your account balance.</p>
                     </div>
-                    ${renderOriginalRemarks(record)}
-                    <div class="dues-contact-footer">For questions or corrections, please contact the HOA Administration.</div>
+                    
                     ${renderUpdateDisclaimer()}
                 </div>
             `;
@@ -280,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <strong>Payment status requires HOA verification.</strong>
                         <p>The available remarks do not provide enough reliable information to determine your payment status. Please contact the HOA administration.</p>
                     </div>
-                    ${renderOriginalRemarks(record)}
+                    
                     ${renderUpdateDisclaimer()}
                 </div>
             `;
@@ -318,8 +321,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     ${renderList("UNPAID PERIOD / MONTHS", record.unpaidPeriods, "dues-unpaid-periods")}
                     ${hasUnpaidPeriods ? renderUnpaidAmount(record) : ""}
                     ${record.needsVerification ? `<p class="dues-result-contact">Please ask the HOA to verify the balance amount.</p>` : ""}
-                    ${renderOriginalRemarks(record)}
-                    <div class="dues-contact-footer">For questions or corrections, please contact the HOA Administration.</div>
+                    
                     ${renderUpdateDisclaimer()}
                 </div>
             `;
@@ -338,7 +340,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <span class="dues-note-icon" aria-hidden="true">i</span>
                         <div><strong>ELECOM benefit recorded</strong><p>The period shown above is marked as free in the HOA remarks and is not treated as unpaid dues.</p></div>
                     </div>
-                    ${renderOriginalRemarks(record)}
+                    
                     ${renderUpdateDisclaimer()}
                 </div>
             `;
@@ -356,8 +358,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <strong>${escapeHtml(paidLabel || "Date recorded by the HOA")}</strong>
                         <p>${escapeHtml(record.statusMessage || "Based on the Original Remarks recorded by the HOA.")}</p>
                     </div>
-                    ${renderOriginalRemarks(record)}
-                    <div class="dues-contact-footer">If you believe this information is incorrect, please contact the HOA Administration.</div>
+                    
                     ${renderUpdateDisclaimer()}
                 </div>
             `;
@@ -373,8 +374,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     ${paidLabel ? `<div class="dues-paid-card"><span class="dues-detail-label">PAID THROUGH</span><strong>${escapeHtml(paidLabel)}</strong></div>` : ""}
                     ${renderList("UNPAID PERIOD / MONTHS", record.unpaidPeriods, "dues-unpaid-periods")}
                     ${renderUnpaidAmount(record)}
-                    ${renderOriginalRemarks(record)}
-                    <div class="dues-contact-footer">For questions or corrections, please contact the HOA Administration.</div>
+                    
                     ${renderUpdateDisclaimer()}
                 </div>
             `;
@@ -391,7 +391,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <strong>Payment status requires HOA verification.</strong>
                     <p>Please contact the HOA administration to confirm your account status.</p>
                 </div>
-                ${renderOriginalRemarks(record)}
+                
                 ${renderUpdateDisclaimer()}
             </div>
         `;
