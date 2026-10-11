@@ -21,6 +21,249 @@
 	<meta property="og:image:alt" content="Georgetown Heights Executive Homes Phase 2 HOA Portal">
 
 	<meta name="twitter:card" content="summary_large_image">
+
+    <style>
+      /* HOA dues result redesign */
+      .dues-result {
+        overflow: hidden;
+        border-radius: 18px;
+      }
+      .dues-result-heading { display: none !important; }
+      .dues-account-heading {
+        padding: 1.25rem 1.25rem 1.15rem;
+        background: #173d32;
+        color: #fff;
+        border-radius: 14px 14px 0 0;
+      }
+      .dues-account-kicker {
+        display: flex;
+        align-items: center;
+        gap: .55rem;
+        margin-bottom: .9rem;
+        color: #d9e9c9;
+        font-size: .72rem;
+        font-weight: 750;
+        letter-spacing: .09em;
+      }
+      .dues-account-kicker-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.7rem;
+        height: 1.7rem;
+        border: 1px solid rgba(255,255,255,.35);
+        border-radius: 50%;
+        font-size: .95rem;
+      }
+      .dues-account-name {
+        font-size: clamp(1.15rem, 4vw, 1.45rem);
+        line-height: 1.25;
+        font-weight: 800;
+        overflow-wrap: anywhere;
+      }
+      .dues-account-property {
+        margin-top: .35rem;
+        color: #e2ebe5;
+        font-size: .88rem;
+        line-height: 1.5;
+      }
+      .dues-status-chip {
+        display: inline-flex;
+        margin-top: .9rem;
+        padding: .4rem .7rem;
+        border: 1px solid rgba(255,255,255,.28);
+        border-radius: 999px;
+        background: rgba(255,255,255,.10);
+        color: #fff;
+        font-size: .72rem;
+        line-height: 1.35;
+        font-weight: 750;
+        letter-spacing: .035em;
+      }
+      .dues-result-body {
+        display: grid;
+        gap: 1rem;
+        padding: 1rem;
+        background: #fff;
+        color: #24332c;
+        border: 1px solid #e1e8e3;
+        border-top: 0;
+        border-radius: 0 0 14px 14px;
+      }
+      .dues-balance-card, .dues-paid-card {
+        display: grid;
+        gap: .35rem;
+        padding: 1rem;
+        border: 1px solid #e6d6d4;
+        border-radius: 12px;
+        background: #fff8f7;
+      }
+      .dues-detail-label, .dues-section-label {
+        color: #5d6e64;
+        font-size: .72rem;
+        font-weight: 800;
+        letter-spacing: .08em;
+      }
+      .dues-balance-amount {
+        color: #a52822;
+        font-size: clamp(1.7rem, 6vw, 2.15rem);
+        line-height: 1.2;
+        font-weight: 850;
+        font-variant-numeric: tabular-nums;
+      }
+      .dues-detail-caption {
+        color: #69776f;
+        font-size: .78rem;
+        line-height: 1.45;
+      }
+      .dues-detail-section {
+        padding: .15rem 0;
+      }
+      .dues-detail-section ul {
+        list-style: none;
+        margin: .55rem 0 0;
+        padding: 0;
+        display: grid;
+        gap: .5rem;
+      }
+      .dues-detail-section li {
+        position: relative;
+        padding: .7rem .8rem .7rem 2.1rem;
+        border: 1px solid #e4e9e5;
+        border-radius: 9px;
+        background: #f7f9f7;
+        line-height: 1.45;
+        overflow-wrap: anywhere;
+      }
+      .dues-detail-section li::before {
+        content: "•";
+        position: absolute;
+        left: .9rem;
+        color: #a46c1d;
+        font-size: 1.15rem;
+        font-weight: 900;
+      }
+      .dues-note-card, .dues-message-card {
+        display: flex;
+        align-items: flex-start;
+        gap: .7rem;
+        padding: .9rem;
+        border: 1px solid #e2e8e3;
+        border-radius: 11px;
+        background: #f7f9f7;
+      }
+      .dues-note-card p, .dues-message-card p, .dues-paid-card p {
+        margin: .3rem 0 0;
+        color: #526259;
+        font-size: .88rem;
+        line-height: 1.55;
+      }
+      .dues-note-icon {
+        display: inline-flex;
+        flex: 0 0 1.4rem;
+        width: 1.4rem;
+        height: 1.4rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #e5ebe6;
+        color: #315342;
+        font-weight: 800;
+        font-size: .8rem;
+      }
+      .dues-original-remarks {
+        border-top: 1px solid #e4e9e5;
+        padding-top: .8rem;
+        color: #5c6c62;
+        font-size: .82rem;
+      }
+      .dues-original-remarks summary {
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .dues-original-remarks p {
+        margin: .55rem 0 0;
+        padding: .7rem;
+        border-radius: 8px;
+        background: #f6f7f6;
+        color: #43534a;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+      }
+      .dues-contact-footer, .dues-result-contact {
+        color: #627167;
+        font-size: .82rem;
+        line-height: 1.5;
+      }
+      .dues-paid-card {
+        border-color: #cfe2d3;
+        background: #f2faf3;
+      }
+      .dues-paid-card > strong {
+        color: #23643b;
+        font-size: 1.3rem;
+      }
+      .dues-result.loading, .dues-result-message {
+        padding: .9rem;
+      }
+      @media (max-width: 480px) {
+        .dues-account-heading { padding: 1rem; }
+        .dues-result-body { padding: .8rem; gap: .85rem; }
+        .dues-account-property { font-size: .82rem; }
+      }
+
+      .dues-unpaid-periods {
+        padding: .85rem;
+        border: 1px solid #e9c9a0;
+        border-radius: 12px;
+        background: #fff9ef;
+      }
+      .dues-unpaid-periods .dues-section-label {
+        color: #8b4b0e;
+        font-size: .78rem;
+      }
+      .dues-unpaid-periods li {
+        border-color: #f0d8b8;
+        background: #fff;
+        color: #713c0a;
+        font-weight: 800;
+        font-size: 1rem;
+      }
+      .dues-unpaid-periods li::before { color: #c16b12; }
+      .dues-amount-due-card {
+        display: grid;
+        gap: .4rem;
+        padding: 1rem;
+        border: 1px solid #c9dfd0;
+        border-radius: 12px;
+        background: #f1f8f3;
+      }
+      .dues-amount-due-value {
+        color: #17643b;
+        font-size: clamp(1.7rem, 6vw, 2.15rem);
+        line-height: 1.2;
+        font-weight: 850;
+        font-variant-numeric: tabular-nums;
+      }
+      .dues-amount-due-calculation {
+        color: #24563a;
+        font-size: .9rem;
+        font-weight: 750;
+      }
+      .dues-amount-due-card p {
+        margin: .2rem 0 0;
+        color: #526259;
+        font-size: .84rem;
+        line-height: 1.5;
+      }
+      .dues-amount-due-unknown {
+        border-color: #e2d7b9;
+        background: #fffaf0;
+      }
+      .dues-amount-due-unknown .dues-amount-due-value { color: #8b5b12; font-size: 1.15rem; }
+
+    </style>
+
 </head>
 <body>
 
@@ -456,7 +699,7 @@
 </footer>
 
 <script src="script.js"></script>
-<script src="hoa-dues.js"></script>
+<script src="hoa-dues.js?v=3"></script>
 <!-- HOA Dues Status Modal -->
 <div class="dues-modal" id="duesModal" aria-hidden="true">
     <div class="dues-modal-overlay" id="duesModalOverlay"></div>
